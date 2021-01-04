@@ -1,14 +1,14 @@
 //
-//  Calculator.swift
-//  SwiftUICW2
+//  ContentView.swift
+//  cw2-3
 //
-//  Created by Omar Alibrahim on 12/19/20.
-//  Copyright: Kuwait Codes 2020 code.kw
+//  Created by MacBook` on 02/01/2021.
+//
 
 import SwiftUI
 
-struct Calculator: View {
-    // MARK: - Add states here
+struct ContentView: View {
+    @State var button = "0"
     
     var body: some View {
         ZStack{
@@ -17,36 +17,58 @@ struct Calculator: View {
                 Spacer()
                 HStack{
                     Spacer()
-                    Text("0")
+                    Text(button)
                         .modifier(TitleModifier())
                         .animation(.easeIn(duration: 0.1))
+                    
                 }
                 HStack{
-                    Text("C").modifier(ButtonModifier(type: .gray))
+                    Text("C")
+                        .modifier(ButtonModifier(type: .gray))
+                        .onTapGesture {button = "0"}
                     Text("±").modifier(ButtonModifier(type: .gray))
                     Text("%").modifier(ButtonModifier(type: .gray))
                     Text("÷").modifier(ButtonModifier(type: .orange))
-                }
+                }  
                 HStack{
-                    Text("7").modifier(ButtonModifier(type: .gray))
-                    Text("8").modifier(ButtonModifier(type: .gray))
-                    Text("9").modifier(ButtonModifier(type: .gray))
+                    Text("7")
+                        .modifier(ButtonModifier(type: .gray))
+                        .onTapGesture {button = "7"}
+                    Text("8")
+                        .modifier(ButtonModifier(type: .gray))
+                        .onTapGesture {button = "8"}
+                    Text("9")
+                        .modifier(ButtonModifier(type: .gray))
+                        .onTapGesture {button = "9"}
                     Text("×").modifier(ButtonModifier(type: .orange))
                 }
                 HStack{
-                    Text("4").modifier(ButtonModifier(type: .gray))
-                    Text("5").modifier(ButtonModifier(type: .gray))
-                    Text("6").modifier(ButtonModifier(type: .gray))
+                    Text("4")
+                        .modifier(ButtonModifier(type: .gray))
+                        .onTapGesture {button = "4"}
+                    Text("5")
+                        .modifier(ButtonModifier(type: .gray))
+                        .onTapGesture {button = "5"}
+                    Text("6")
+                        .modifier(ButtonModifier(type: .gray))
+                        .onTapGesture {button = "6"}
                     Text("-").modifier(ButtonModifier(type: .orange))
                 }
                 HStack{
-                    Text("1").modifier(ButtonModifier(type: .gray))
-                    Text("2").modifier(ButtonModifier(type: .gray))
-                    Text("3").modifier(ButtonModifier(type: .gray))
+                    Text("1")
+                        .modifier(ButtonModifier(type: .gray))
+                        .onTapGesture {button = "1"}
+                    Text("2")
+                        .modifier(ButtonModifier(type: .gray))
+                        .onTapGesture {button = "2"}
+                    Text("3")
+                        .modifier(ButtonModifier(type: .gray))
+                        .onTapGesture {button = "3"}
                     Text("+").modifier(ButtonModifier(type: .orange))
                 }
                 HStack{
                     Text("0").modifier(Zero())
+                        .onTapGesture {button = "0"}
                     Text(".").modifier(ButtonModifier(type: .gray))
                     Text("=").modifier(ButtonModifier(type: .orange))
                 }
@@ -79,7 +101,7 @@ struct ButtonModifier: ViewModifier{
     func body(content: Content) -> some View {
         content
             .font(.largeTitle)
-            .frame(width: type == .zero ? 140 : 70, height: 70)
+            .frame(width: type == .zero ? 120 : 60, height: 60)
             .background(self.type == .gray ? Color.gray : Color.orange)
             .clipShape(Circle())
             .foregroundColor(Color.white)
@@ -93,7 +115,7 @@ struct Zero: ViewModifier{
         content
             .font(.largeTitle)
             .multilineTextAlignment(.leading)
-            .frame(width:  140 , height: 70)
+            .frame(width:  120 , height: 60)
             .background(Color.gray)
             .clipShape(Capsule())
             .foregroundColor(Color.white)
@@ -101,8 +123,9 @@ struct Zero: ViewModifier{
     }
 }
 
-struct Calculator_Previews: PreviewProvider {
+struct CaontentView_Previews: PreviewProvider {
     static var previews: some View {
-        Calculator()//.environment(\.colorScheme, .dark)
+        ContentView()//.environment(\.colorScheme, .dark)
     }
 }
+
